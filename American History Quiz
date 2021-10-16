@@ -1,0 +1,190 @@
+# In the section shown below, we greet the user and inform them about the quiz. I've built-in options to allow the
+# user to exit the program if they wish not to play. In addition to that, I also wrote the program to accept multiple
+# types of input. Various forms of text input will be standard throughout the remainder of the program.
+
+# One thing you will note here is that I added a time delay between prompts. The time delays are added to give the
+# quiz a unique look and feel. The time delays allow the user to read the text naturally instead of forced.
+
+import time
+
+name = input("What is your name? ")
+print(f"Hello and Welcome {name.title()}! This quiz has been developed to test your knowledge of American History")
+time.sleep(1.5)
+print()
+playing = input("Would you like to test you knowledge? ")
+
+if playing == "yes" or playing == "Yes" or playing == "y" or playing == "Y":
+    time.sleep(0.5)
+    print(
+        f"{name.title()} Awesome! This is a multiple choice and true/false question game. After the question prompts "
+        f"type your answer and hit enter")
+elif playing == "n" or playing == "N" or playing == "No" or playing == "no":
+    time.sleep(0.5)
+    print(f"Well...")
+    time.sleep(1.5)
+    print("Goodbye then")
+    time.sleep(1)
+    quit()
+else:
+    print("Invalid answer, Please restart the program")
+    quit()
+print()
+
+# The section shown above establishes the quiz score and the question numbers. These will be used as a running total
+# throughout the program as the user progresses.
+
+# Next, we define the two primary functions of the quiz. The first is correct_answer, and this is the function that
+# will run if the user inputs the correct answer when they are answering the quiz question. If the answer is True the
+# function appends quiz_score and question_number with +1. Additionally, it concludes with printing text to inform
+# the quiz taker that their question was correct and tells them their current score.
+
+# I’ve applied the same logic to the incorrect_answer function. The only difference between the incorrect_answer
+# function and the correct_answer function is that the incorrect_answer function does not append the quiz score and
+# informs the quiz taker that their answer was incorrect.
+
+
+# Quiz Start Defining correct/incorrect answer functions
+quiz_score = []
+question_number = []
+
+
+def correct_answer(answer):
+    if answer is True:
+        quiz_score.append(1)
+        question_number.append(1)
+        print(f"Correct {name.title()}!")
+        time.sleep(.5)
+        print(f"Your score is {sum(quiz_score)} for {sum(question_number)}")
+
+
+def incorrect_answer(answer):
+    if answer is True:
+        question_number.append(1)
+        print(f"Incorrect {name.title()}!")
+        time.sleep(.5)
+        print(f"Your score is {sum(quiz_score)} for {sum(question_number)}")
+
+# From here, the quiz taker moves on to answering the questions. We print the question then prompt the user for
+# input. If the user correctly answers then, we run our correct_answer function. If the answer is incorrect,
+# then we run our incorrect_answer function. The correct answer_function and incorrect answer function is applied to
+# all questions, including the True/False question.
+
+
+# Question 1
+time.sleep(1)
+print("During the American Revolution, how many colonies wanted independence from England?")
+time.sleep(2)
+print("A - 12")
+time.sleep(0.5)
+print("B - 13")
+time.sleep(0.5)
+print("C - 48")
+time.sleep(0.5)
+print("D - 50")
+answer1 = input("A, B, C, or D?: ")
+time.sleep(1.5)
+if answer1 == "b" or answer1 == "B":
+    correct_answer(True)
+else:
+    incorrect_answer(True)
+
+# Question 2
+print()
+time.sleep(1)
+print("Who was the first president of the United States?")
+time.sleep(1.25)
+print("A - Benjamin Franklin")
+time.sleep(0.5)
+print("B - Abraham Lincoln")
+time.sleep(0.5)
+print("C - George Washington")
+time.sleep(0.5)
+print("D - Ronald Reagan")
+answer2 = input("A, B, C, or D?: ")
+time.sleep(1.5)
+if answer2 == "c" or answer2 == "C":
+    correct_answer(True)
+else:
+    incorrect_answer(True)
+
+# Question 3
+print()
+time.sleep(1)
+print("When was the US Constitution created?")
+time.sleep(1)
+print("A - 1787")
+time.sleep(0.5)
+print("B - 1776")
+time.sleep(0.5)
+print("C - 1865")
+time.sleep(0.5)
+print("D - 1941")
+answer3 = input("A, B, C, or D?: ")
+time.sleep(1.5)
+if answer3 == "a" or answer3 == "A":
+    correct_answer(True)
+else:
+    incorrect_answer(True)
+
+# Question 4
+print()
+time.sleep(1)
+print("During which period did the American Revolutionary war take place?: ")
+time.sleep(1.5)
+print("A - 1861 - 1865")
+time.sleep(0.5)
+print("B - 1955 - 1975")
+time.sleep(0.5)
+print("C - 1775 - 1783")
+time.sleep(0.5)
+print("D - 1939 - 1945")
+answer4 = input("A, B, C, or D?: ")
+time.sleep(1.5)
+if answer4 == "c" or answer4 == "C":
+    correct_answer(True)
+else:
+    incorrect_answer(True)
+
+# Question 5
+print()
+time.sleep(1)
+print("The president of the United States has absolute power? ")
+time.sleep(1)
+answer5 = input("True or False? ")
+if answer5 == "False" or answer5 == "false" or answer5 == "f" or answer5 == "F":
+    correct_answer(True)
+else:
+    incorrect_answer(True)
+
+
+# At this point, the quiz is wrapped up. We calculate the percentage the user scored. This calculation comes from
+# quiz_score and question_number, which we have been appending with our functions. Depending on the quiz taker’s
+# score, there are two prompts.
+
+
+# Completion
+completed_score = sum(quiz_score) / sum(question_number) * 100
+time.sleep(2)
+print(f"{name.title()} You've completed the American History quiz! Congratulations, your score is {completed_score}%")
+time.sleep(2)
+print()
+if completed_score >= 75:
+    print(f"Let it be known that {name.title()} a true American Historian! Great work!")
+    print("""
+    |* * * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOO|
+    | * * * * * * * * *  :::::::::::::::::::::::::|
+    |* * * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOO|
+    | * * * * * * * * *  :::::::::::::::::::::::::|
+    |* * * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOO|
+    | * * * * * * * * *  ::::::::::::::::::::;::::|
+    |* * * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOO|
+    |:::::::::::::::::::::::::::::::::::::::::::::|
+    |OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|
+    |:::::::::::::::::::::::::::::::::::::::::::::|
+    |OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|
+    |:::::::::::::::::::::::::::::::::::::::::::::|
+    |OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|
+  """)
+elif completed_score < 75:
+    print("I'd recommend checking out your local library to learn more about American history.")
+quit()
